@@ -1,0 +1,17 @@
+{
+  "name": "casario-landing",
+  "version": "1.0.0",
+  "description": "Static landing page for Casario served with Express",
+  "main": "server.js",
+  "private": false,
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

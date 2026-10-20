@@ -1,0 +1,7 @@
+tunnel: <TUNNEL_UUID>
+credentials-file: /etc/cloudflared/<TUNNEL_UUID>.json
+
+ingress:
+  - hostname: casario.ddsol.cl
+    service: http://localhost:3000
+  - service: http_status:404

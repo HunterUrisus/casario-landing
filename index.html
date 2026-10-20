@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Río Cabañas · Inicio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5EF;
+    --bg-soft: #EEEEE6;
+    --card: #FFFEFA;
+    --ink: #263E33;
+    --ink-2: #283A30;
+    --muted: #73776D;
+    --line: #D8DDD1;
+    --avail: #E6EBDF;
+    --busy: #E9DAD3;
+    --busy-text: #885B4D;
+    --white: #FFFFFF;
+    --sand-text: #DDE4D8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    width: 1440px;
+    margin: 0 auto;
+  }
+  .serif { font-family: "Cormorant Garamond", serif; font-weight: 500; }
+  .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 104px; padding: 0 80px; border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-mark { width: 42px; height: 44px; border: 1.4px solid var(--ink); border-radius: 6px; }
+  .brand-name { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 30px; line-height: 1; }
+  .brand-sub { font-size: 9px; letter-spacing: .2em; color: var(--ink); }
+  .links { display: flex; gap: 36px; align-items: center; font-size: 14px; }
+  .btn-dark {
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 38px; padding: 0 18px; background: var(--ink); color: var(--white);
+    border-radius: 4px; font-size: 14px; font-weight: 500;
+  }
+  .btn-dark.lg { height: 48px; padding: 0 22px; gap: 14px; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 48px; padding: 0 22px; border: 1px solid var(--line); border-radius: 4px;
+    font-size: 14px; font-weight: 500; background: transparent;
+  }
+
+  section.wrap { padding: 0 80px; }
+
+  /* HERO */
+  .hero { padding: 60px 0 42px; display: flex; align-items: flex-end; gap: 80px; }
+  .hero-copy { width: 740px; display: flex; flex-direction: column; gap: 20px; }
+  .hero-title { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 78px; line-height: .98; }
+  .hero-invite { width: 0; flex: 1; display: flex; flex-direction: column; gap: 22px; padding-bottom: 6px; }
+  .hero-invite p { font-size: 17px; line-height: 1.6; color: var(--muted); }
+
+  /* CARRIL */
+  .carousel { display: flex; gap: 12px; }
+  .slide { display: flex; flex-direction: column; gap: 14px; }
+  .slide.main { width: 476px; }
+  .slide.side { width: 256px; }
+  .photo { position: relative; height: 354px; border-radius: 4px; overflow: hidden; }
+  .photo img { border-radius: 4px; }
+  .tag {
+    position: absolute; left: 18px; top: 18px; padding: 7px 12px;
+    background: var(--bg); border-radius: 3px; font-size: 10px; letter-spacing: .12em; color: var(--ink);
+  }
+  .caption { display: flex; justify-content: space-between; align-items: flex-end; }
+  .caption .name { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 24px; line-height: 1.1; }
+  .caption .num { font-size: 11px; color: var(--muted); }
+  .controls {
+    display: flex; justify-content: space-between; align-items: center; padding-top: 26px;
+  }
+  .progress { display: flex; gap: 7px; align-items: center; }
+  .progress span { display: block; width: 22px; height: 2px; background: var(--line); }
+  .progress span.on { width: 48px; background: var(--ink); }
+  .controls .note { font-size: 11px; color: var(--muted); }
+  .arrows { display: flex; gap: 8px; }
+  .arrow {
+    width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 999px;
+    display: flex; align-items: center; justify-content: center; background: var(--card);
+    font-size: 16px; color: var(--ink);
+  }
+
+  /* CABAÑAS */
+  .cabins { padding: 64px 80px 88px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 36px; }
+  .cabins-head { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cabins-title { display: flex; flex-direction: column; gap: 16px; width: 740px; }
+  .cabins-title h2 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 54px; line-height: 1.05; }
+  .cabins-head p { width: 365px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+  .cabin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .cabin {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 16px; display: flex; flex-direction: column; gap: 16px;
+  }
+  .gallery { display: flex; gap: 8px; }
+  .gallery .cover { width: 392px; height: 272px; flex: none; }
+  .gallery .inner { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .gallery .inner .img-wrap { height: 132px; }
+  .info { display: flex; flex-direction: column; gap: 18px; padding: 24px 8px 8px; }
+  .identity { display: flex; justify-content: space-between; align-items: center; }
+  .identity h3 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 36px; line-height: 1; }
+  .identity .idx { font-size: 12px; color: var(--muted); }
+  .info .note { font-size: 14px; line-height: 1.55; color: var(--muted); }
+  .sep { height: 1px; background: var(--line); }
+  .booking { display: flex; justify-content: space-between; align-items: center; }
+  .rate { display: flex; flex-direction: column; gap: 4px; }
+  .rate .label { font-size: 11px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+  .rate .value { font-family: "Cormorant Garamond", serif; font-size: 30px; font-weight: 500; line-height: 1; }
+  .cal-btn {
+    display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px;
+    border: 1px solid var(--line); border-radius: 4px; font-size: 13px; font-weight: 500;
+  }
+  .disclaimer {
+    display: flex; justify-content: center; align-items: center; gap: 10px;
+    font-size: 12px; color: var(--muted); padding-top: 4px;
+  }
+
+  /* DISPONIBILIDAD */
+  .avail { background: var(--bg-soft); padding: 88px 80px; display: flex; flex-direction: column; gap: 30px; }
+  .avail-head { display: flex; justify-content: space-between; align-items: flex-end; }
+  .avail-head h2 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 54px; line-height: 1.05; margin-top: 16px; }
+  .sample { width: 350px; display: flex; flex-direction: column; gap: 8px; }
+  .sample p { font-size: 13px; line-height: 1.6; color: var(--muted); }
+  .filters { display: flex; gap: 10px; }
+  .chip {
+    padding: 11px 18px; border: 1px solid var(--ink); border-radius: 999px;
+    font-size: 12px; color: var(--ink); background: transparent;
+  }
+  .chip.on { background: var(--ink); color: var(--white); }
+  .avail-body { display: flex; gap: 24px; align-items: flex-start; }
+  .general { width: 744px; background: var(--card); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; gap: 28px; }
+  .cal-top { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cal-top .eyebrow { display: block; }
+  .cal-top h3 { font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: 30px; }
+  .legend { display: flex; gap: 22px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--muted); }
+  .swatch { width: 9px; height: 9px; border-radius: 2px; }
+  .track-row { display: flex; align-items: center; gap: 14px; }
+  .track-row .name { width: 110px; font-size: 13px; font-weight: 600; flex: none; }
+  .track { display: grid; grid-template-columns: repeat(31, 1fr); gap: 2px; flex: 1; }
+  .track i { height: 14px; border-radius: 2px; background: var(--avail); }
+  .track i.occ { background: var(--busy); }
+  .track i.sel { background: var(--ink); }
+  .day-head { display: flex; gap: 14px; }
+  .day-head .label { width: 110px; font-size: 10px; color: var(--muted); letter-spacing: .08em; }
+  .day-head .days { display: grid; grid-template-columns: repeat(31, 1fr); gap: 2px; flex: 1; font-size: 9px; text-align: center; color: var(--muted); }
+  .help {
+    display: flex; gap: 10px; padding: 16px; background: var(--bg); border-radius: 4px;
+    font-size: 12px; line-height: 1.6;
+  }
+
+  .single { width: 512px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+  .single-head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .single-head h3 { font-family: "Cormorant Garamond", serif; font-weight: 400; font-size: 32px; line-height: 1.1; margin-top: 4px; }
+  .month-nav { display: flex; justify-content: space-between; align-items: center; }
+  .month-nav .m { font-size: 14px; font-weight: 500; }
+  .cm { width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .week-head, .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .week-head span { text-align: center; font-size: 10px; color: var(--muted); }
+  .week-head { gap: 6px; }
+  .day {
+    height: 38px; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; border-radius: 3px; background: var(--avail); color: var(--ink);
+  }
+  .day.empty { background: transparent; }
+  .day.occ { background: var(--busy); color: var(--busy-text); }
+  .day.sel { background: var(--ink); color: var(--white); }
+  .stay { display: flex; justify-content: space-between; padding-top: 4px; }
+  .stay .range { font-size: 13px; }
+  .stay .meta { font-size: 12px; color: var(--muted); }
+  .sep-h { height: 1px; background: var(--line); }
+
+  /* RESERVA */
+  .reserve { display: flex; align-items: center; gap: 70px; padding: 64px 80px; background: var(--ink); color: var(--sand-text); }
+  .reserve-copy { width: 700px; display: flex; flex-direction: column; gap: 22px; }
+  .reserve-copy .eyebrow { color: var(--sand-text); }
+  .reserve-copy h2 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 62px; line-height: 1.04; color: var(--bg); }
+  .reserve-copy p { font-size: 15px; line-height: 1.65; width: 590px; }
+  .reserve-copy .btn-light {
+    display: inline-flex; align-items: center; gap: 14px; height: 48px; padding: 0 22px;
+    background: var(--bg); color: var(--ink); border-radius: 4px; font-size: 14px; font-weight: 500; width: max-content;
+  }
+  .reserve-copy .fine { font-size: 11px; }
+  .reserve-img { flex: 1; height: 330px; position: relative; border-radius: 4px; overflow: hidden; }
+  .reserve-img .quote {
+    position: absolute; left: 18px; top: 272px; padding: 8px 12px; background: var(--bg);
+    font-family: "Cormorant Garamond", serif; font-size: 20px; color: var(--ink);
+  }
+
+  /* FOOTER */
+  footer { padding: 40px 80px 24px; display: flex; flex-direction: column; gap: 30px; }
+  .foot-top { display: flex; justify-content: space-between; align-items: center; }
+  .foot-links { display: flex; gap: 32px; font-size: 12px; }
+  .social { display: flex; gap: 24px; font-size: 12px; }
+  .sep-f { height: 1px; background: var(--line); }
+  .foot-bottom { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+  .foot-bottom .back { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <div>
+      <div class="brand-name">Casa Río</div>
+      <div class="brand-sub">CABAÑAS</div>
+    </div>
+  </div>
+  <div class="links">
+    <a href="#cabanas">Las cabañas</a>
+    <a href="#disponibilidad">Disponibilidad</a>
+    <a href="#contacto">Contacto</a>
+    <a class="btn-dark" href="#contacto">Consultar reserva</a>
+  </div>
+</nav>
+
+<section class="wrap hero">
+  <div class="hero-copy">
+    <div class="eyebrow">Cuatro cabañas · Un tiempo para vos</div>
+    <h1 class="hero-title">Tu próxima pausa,<br>en Casa Río.</h1>
+  </div>
+  <div class="hero-invite">
+    <p>Elegí tu cabaña, encontrá una fecha y empecemos a preparar tu estadía.</p>
+    <a class="btn-dark lg" href="#disponibilidad">Ver disponibilidad ↓</a>
+  </div>
+</section>
+
+<section class="wrap" style="padding-bottom: 50px;">
+  <div class="carousel">
+    <div class="slide main">
+      <div class="photo">
+        <img src="img/hero-01.png" alt="Exterior de la cabaña Río Bío Bío">
+        <span class="tag">CONOCÉ CASA RÍO</span>
+      </div>
+      <div class="caption"><div class="name">Río Bío Bío</div><div class="num">01 / 04</div></div>
+    </div>
+    <div class="slide side">
+      <div class="photo"><img src="img/rio-gomero-cover.png" alt="Cabaña Río Gomero"></div>
+      <div class="caption"><div class="name">Río Gomero</div><div class="num">02 / 04</div></div>
+    </div>
+    <div class="slide side">
+      <div class="photo"><img src="img/rio-laja-cover.png" alt="Cabaña Río Laja"></div>
+      <div class="caption"><div class="name">Río Laja</div><div class="num">03 / 04</div></div>
+    </div>
+    <div class="slide side">
+      <div class="photo"><img src="img/rio-loa-cover.png" alt="Cabaña Río Loa"></div>
+      <div class="caption"><div class="name">Río Loa</div><div class="num">04 / 04</div></div>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="progress"><span class="on"></span><span></span><span></span><span></span></div>
+    <div class="note">Fotografías ilustrativas · Imaginá tu próxima escapada</div>
+    <div class="arrows">
+      <div class="arrow">←</div>
+      <div class="arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<section class="cabins" id="cabanas">
+  <div class="cabins-head">
+    <div class="cabins-title">
+      <div class="eyebrow">Encontrá tu lugar</div>
+      <h2>Cuatro formas de quedarte.</h2>
+    </div>
+    <p>Recorré las galerías de nuestras cabañas y consultá el calendario de cada una.</p>
+  </div>
+
+  <div class="cabin-grid">
+    <!-- 01 -->
+    <article class="cabin">
+      <div class="gallery">
+        <div class="cover"><img src="img/bio-bio-cover.png" alt="Exterior Río Bío Bío"></div>
+        <div class="inner">
+          <div class="img-wrap"><img src="img/bio-bio-living.png" alt="Estar y comedor Río Bío Bío"></div>
+          <div class="img-wrap"><img src="img/bio-bio-bedroom.png" alt="Dormitorio Río Bío Bío"></div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="identity"><h3>Cabaña Río Bío Bío</h3><span class="idx">01</span></div>
+        <p class="note">Conocé sus espacios y elegí las fechas de tu estadía. Consultanos por capacidad, equipamiento y tarifas.</p>
+        <div class="sep"></div>
+        <div class="booking">
+          <div class="rate"><span class="label">Tu estadía</span><span class="value">Tarifa a consultar</span></div>
+          <a class="cal-btn" href="#disponibilidad">Ver calendario</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="cabin">
+      <div class="gallery">
+        <div class="cover"><img src="img/gomero-cover.png" alt="Exterior Río Gomero"></div>
+        <div class="inner">
+          <div class="img-wrap"><img src="img/gomero-living.png" alt="Estar y comedor Río Gomero"></div>
+          <div class="img-wrap"><img src="img/gomero-bedroom.png" alt="Dormitorio Río Gomero"></div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="identity"><h3>Cabaña Río Gomero</h3><span class="idx">02</span></div>
+        <p class="note">Conocé sus espacios y elegí las fechas de tu estadía. Consultanos por capacidad, equipamiento y tarifas.</p>
+        <div class="sep"></div>
+        <div class="booking">
+          <div class="rate"><span class="label">Tu estadía</span><span class="value">Tarifa a consultar</span></div>
+          <a class="cal-btn" href="#disponibilidad">Ver calendario</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="cabin">
+      <div class="gallery">
+        <div class="cover"><img src="img/laja-cover.png" alt="Exterior Río Laja"></div>
+        <div class="inner">
+          <div class="img-wrap"><img src="img/laja-living.png" alt="Estar y comedor Río Laja"></div>
+          <div class="img-wrap"><img src="img/laja-bedroom.png" alt="Dormitorio Río Laja"></div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="identity"><h3>Cabaña Río Laja</h3><span class="idx">03</span></div>
+        <p class="note">Conocé sus espacios y elegí las fechas de tu estadía. Consultanos por capacidad, equipamiento y tarifas.</p>
+        <div class="sep"></div>
+        <div class="booking">
+          <div class="rate"><span class="label">Tu estadía</span><span class="value">Tarifa a consultar</span></div>
+          <a class="cal-btn" href="#disponibilidad">Ver calendario</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="cabin">
+      <div class="gallery">
+        <div class="cover"><img src="img/loa-cover.png" alt="Exterior Río Loa"></div>
+        <div class="inner">
+          <div class="img-wrap"><img src="img/loa-living.png" alt="Estar y comedor Río Loa"></div>
+          <div class="img-wrap"><img src="img/loa-bedroom.png" alt="Dormitorio Río Loa"></div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="identity"><h3>Cabaña Río Loa</h3><span class="idx">04</span></div>
+        <p class="note">Conocé sus espacios y elegí las fechas de tu estadía. Consultanos por capacidad, equipamiento y tarifas.</p>
+        <div class="sep"></div>
+        <div class="booking">
+          <div class="rate"><span class="label">Tu estadía</span><span class="value">Tarifa a consultar</span></div>
+          <a class="cal-btn" href="#disponibilidad">Ver calendario</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="disclaimer">ⓘ Las fotografías son ilustrativas. Confirmá los detalles de cada cabaña antes de reservar.</div>
+</section>
+
+<section class="avail" id="disponibilidad">
+  <div class="avail-head">
+    <div>
+      <div class="eyebrow">El primer paso de tu escapada</div>
+      <h2>Hacé lugar en tu calendario.</h2>
+    </div>
+    <div class="sample">
+      <div class="eyebrow" style="color: var(--ink);">Disponibilidad de ejemplo</div>
+      <p>Fechas ilustrativas de julio de 2026. La disponibilidad se confirma por WhatsApp.</p>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="chip on">Todas las cabañas</span>
+    <span class="chip">Río Bío Bío</span>
+    <span class="chip">Río Gomero</span>
+    <span class="chip">Río Laja</span>
+    <span class="chip">Río Loa</span>
+  </div>
+
+  <div class="avail-body">
+    <div class="general">
+      <div class="cal-top">
+        <div>
+          <span class="eyebrow">Vista general</span>
+          <h3>Julio 2026</h3>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><span class="swatch" style="background: var(--avail);"></span>Disponible</div>
+          <div class="legend-item"><span class="swatch" style="background: var(--busy);"></span>Ocupado</div>
+          <div class="legend-item"><span class="swatch" style="background: var(--ink);"></span>Selección</div>
+        </div>
+      </div>
+
+      <div class="day-head">
+        <span class="label">CABAÑA / DÍA</span>
+        <div class="days">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+        </div>
+      </div>
+
+      <!-- Estados por cabaña: patrón de ejemplo, no hay datos día a día en el diseño -->
+      <div class="track-row"><span class="name">Río Bío Bío</span><div class="track" id="t1"></div></div>
+      <div class="track-row"><span class="name">Río Gomero</span><div class="track" id="t2"></div></div>
+      <div class="track-row"><span class="name">Río Laja</span><div class="track" id="t3"></div></div>
+      <div class="track-row"><span class="name">Río Loa</span><div class="track" id="t4"></div></div>
+
+      <div class="help">Cada casilla representa un día. Revisá el detalle de una cabaña para elegir tu llegada y salida.</div>
+    </div>
+
+    <div class="single">
+      <div class="single-head">
+        <div>
+          <span class="eyebrow">Calendario individual</span>
+          <h3>Cabaña Río Gomero</h3>
+        </div>
+        <span style="font-size: 14px;">⌄</span>
+      </div>
+      <div class="sep-h"></div>
+      <div class="month-nav">
+        <div class="cm">←</div>
+        <div class="m">Julio 2026</div>
+        <div class="cm">→</div>
+      </div>
+      <div class="week-head">
+        <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+      </div>
+      <div class="week">
+        <div class="day empty"></div><div class="day empty"></div>
+        <div class="day">1</div><div class="day">2</div><div class="day">3</div>
+        <div class="day occ">4</div><div class="day occ">5</div>
+      </div>
+      <div class="week">
+        <div class="day occ">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div>
+        <div class="day occ">11</div><div class="day occ">12</div>
+      </div>
+      <div class="week">
+        <div class="day occ">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div><div class="day">17</div>
+        <div class="day">18</div><div class="day">19</div>
+      </div>
+      <div class="week">
+        <div class="day sel">20</div><div class="day sel">21</div><div class="day sel">22</div><div class="day sel">23</div>
+        <div class="day">24</div><div class="day occ">25</div><div class="day occ">26</div>
+      </div>
+      <div class="week">
+        <div class="day occ">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
+        <div class="day empty"></div><div class="day empty"></div>
+      </div>
+      <div class="sep-h"></div>
+      <div class="stay">
+        <span class="range">20 → 23 de julio</span>
+        <span class="meta">3 noches · Ejemplo</span>
+      </div>
+      <a class="btn-dark" href="#contacto" style="justify-content: center;">Consultar estas fechas</a>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="contacto">
+  <div class="reserve-copy">
+    <div class="eyebrow">Nos vemos en Casa Río</div>
+    <h2>Tu descanso empieza<br>con un mensaje.</h2>
+    <p>Contanos qué cabaña te gustó, cuántas personas vienen y en qué fechas. Te ayudamos a coordinar la reserva.</p>
+    <a class="btn-light" href="#">Reservar por WhatsApp ↗</a>
+    <div class="fine">La reserva queda sujeta a confirmación de disponibilidad y tarifa.</div>
+  </div>
+  <div class="reserve-img">
+    <img src="img/landscape-river.png" alt="Paisaje del río">
+    <div class="quote">Un poco más cerca de la calma.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <div class="brand-name">Casa Río</div>
+        <div class="brand-sub">CABAÑAS</div>
+      </div>
+    </div>
+    <div class="foot-links">
+      <a href="#cabanas">Las cabañas</a>
+      <a href="#disponibilidad">Disponibilidad</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="social">
+      <span>Instagram</span>
+      <span>Facebook</span>
+    </div>
+  </div>
+  <div class="sep-f"></div>
+  <div class="foot-bottom">
+    <span>© 2026 Casa Río Cabañas</span>
+    <span>Fotografías y fechas ilustrativas · Consultá los detalles antes de reservar</span>
+    <a class="back" href="#">Volver al inicio ↑</a>
+  </div>
+</footer>
+
+<script>
+  // Relleno de ejemplo para las filas de disponibilidad por cabaña (31 días).
+  // 0 = disponible, 1 = ocupado, 2 = seleccionado. Patrón ilustrativo, no datos reales.
+  const patterns = {
+    t1: [0,0,0,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,2,2,2,2,0,1,1,0,0,0,0,0],
+    t2: [0,0,0,0,1,1,0,0,0,0,0,1,1,1,0,0,0,0,0,2,2,2,2,0,0,1,1,0,0,0,0],
+    t3: [1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,2,2,2,2,0,0,0,0,1,0,0,0],
+    t4: [0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,1,0,2,2,2,2,0,0,0,1,1,0,0,0]
+  };
+  const cls = ["", "occ", "sel"];
+  for (const [id, arr] of Object.entries(patterns)) {
+    const el = document.getElementById(id);
+    arr.forEach(v => {
+      const i = document.createElement("i");
+      if (cls[v]) i.className = cls[v];
+      el.appendChild(i);
+    });
+  }
+</script>
+</body>
+</html>
