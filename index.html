@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Casa Río Cabañas · Inicio</title>
+<script>
+  // Apply saved theme before first paint to avoid a light flash in dark mode.
+  try {
+    var savedTheme = localStorage.getItem("casa-rio-theme");
+    if (savedTheme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+  } catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,6 +28,31 @@
     --busy-text: #885B4D;
     --white: #FFFFFF;
     --sand-text: #DDE4D8;
+    --reserve-bg: var(--ink);
+    --reserve-text: var(--sand-text);
+    --reserve-title: var(--bg);
+    --btn-light-bg: var(--bg);
+    --btn-light-text: var(--ink);
+  }
+
+  /* DARK MODE: same tokens, remapped. Enabled via <html data-theme="dark"> */
+  :root[data-theme="dark"] {
+    --bg: #1D1312;
+    --bg-soft: #251A18;
+    --card: #2A1F1C;
+    --ink: #F1EAE3;
+    --ink-2: #F1EAE3;
+    --muted: #A69A92;
+    --line: #4A3B37;
+    --avail: #33433A;
+    --busy: #5C3F36;
+    --busy-text: #E8BCAE;
+    --white: #1D1312;          /* text on light buttons (btn-dark, chip.on, day.sel) */
+    --sand-text: #CFC4BC;
+    --reserve-bg: #2A1F1C;
+    --reserve-title: #F1EAE3;
+    --btn-light-bg: #F1EAE3;
+    --btn-light-text: #1D1312;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -189,15 +221,23 @@
   .sep-h { height: 1px; background: var(--line); }
 
   /* RESERVA */
-  .reserve { display: flex; align-items: center; gap: 70px; padding: 64px 80px; background: var(--ink); color: var(--sand-text); }
+  .reserve { display: flex; align-items: center; gap: 70px; padding: 64px 80px; background: var(--reserve-bg); color: var(--reserve-text); }
   .reserve-copy { width: 700px; display: flex; flex-direction: column; gap: 22px; }
-  .reserve-copy .eyebrow { color: var(--sand-text); }
-  .reserve-copy h2 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 62px; line-height: 1.04; color: var(--bg); }
+  .reserve-copy .eyebrow { color: var(--reserve-text); }
+  .reserve-copy h2 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 62px; line-height: 1.04; color: var(--reserve-title); }
   .reserve-copy p { font-size: 15px; line-height: 1.65; width: 590px; }
   .reserve-copy .btn-light {
     display: inline-flex; align-items: center; gap: 14px; height: 48px; padding: 0 22px;
-    background: var(--bg); color: var(--ink); border-radius: 4px; font-size: 14px; font-weight: 500; width: max-content;
+    background: var(--btn-light-bg); color: var(--btn-light-text); border-radius: 4px; font-size: 14px; font-weight: 500; width: max-content;
   }
+  .theme-toggle {
+    width: 30px; height: 30px; padding: 0; display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); cursor: pointer;
+  }
+  .theme-toggle svg { width: 14px; height: 14px; }
+  .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   .reserve-copy .fine { font-size: 11px; }
   .reserve-img { flex: 1; height: 330px; position: relative; border-radius: 4px; overflow: hidden; }
   .reserve-img .quote {
@@ -213,6 +253,95 @@
   .sep-f { height: 1px; background: var(--line); }
   .foot-bottom { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
   .foot-bottom .back { color: var(--ink); }
+
+  /* RESPONSIVE: tablets and phones */
+  @media (max-width: 900px) {
+    body { width: 100%; overflow-x: hidden; }
+
+    nav { height: auto; flex-direction: column; align-items: center; text-align: center; gap: 18px; padding: 20px; }
+    .brand { justify-content: center; }
+    .links { flex-wrap: wrap; justify-content: center; gap: 14px 24px; width: 100%; }
+    .links .btn-dark { width: 100%; justify-content: center; height: 46px; }
+
+    section.wrap { padding: 0 20px; }
+    section.hero { padding: 36px 20px 32px; }
+    .hero { flex-direction: column; align-items: stretch; gap: 28px; }
+    .hero-copy { width: auto; }
+    .hero-title { font-size: 46px; }
+    .hero-invite { width: auto; flex: none; padding-bottom: 0; }
+    .hero-invite .btn-dark.lg { width: 100%; justify-content: center; }
+
+    .carousel {
+      overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+      margin: 0 -20px; padding: 0 20px 4px;
+      /* Snap offsets must match the side padding, or the first slide snaps flush to the edge */
+      scroll-padding: 0 20px;
+    }
+    .carousel::-webkit-scrollbar { display: none; }
+    .slide { flex: none; scroll-snap-align: start; }
+    .slide.main { width: 78vw; max-width: 476px; }
+    .slide.side { width: 56vw; max-width: 256px; }
+    .photo { height: auto; aspect-ratio: 4 / 3; }
+    .photo img { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .controls { flex-wrap: wrap; gap: 14px; padding-top: 20px; }
+    .controls .note { order: 3; width: 100%; }
+
+    .cabins { padding: 48px 20px 60px; gap: 28px; }
+    .cabins-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .cabins-title { width: auto; }
+    .cabins-head p { width: auto; }
+    .cabin-grid { grid-template-columns: 1fr; gap: 20px; }
+    .gallery { flex-direction: column; }
+    .gallery .cover { width: 100%; height: auto; aspect-ratio: 392 / 272; position: relative; }
+    .gallery .cover img,
+    .gallery .inner .img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .gallery .inner { flex-direction: row; }
+    .gallery .inner .img-wrap { flex: 1; height: auto; aspect-ratio: 4 / 3; position: relative; }
+    .info { padding: 16px 8px 8px; }
+    .identity h3 { font-size: 30px; }
+    .booking { flex-wrap: wrap; gap: 14px; }
+    .cal-btn { height: 44px; }
+    .disclaimer { text-align: center; padding: 0 8px; }
+
+    .avail { padding: 56px 20px; }
+    .avail-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .avail-head h2 { margin-top: 8px; }
+    .sample { width: auto; }
+    .filters { flex-wrap: wrap; }
+    .chip { padding: 10px 14px; }
+    .avail-body { flex-direction: column; align-items: stretch; gap: 20px; }
+    .general { width: 100%; padding: 16px; overflow-x: auto; }
+    .cal-top { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .legend { flex-wrap: wrap; gap: 10px 16px; }
+    /* Keep the day grid readable: scroll horizontally inside the card instead of squeezing it */
+    .day-head, .track-row { min-width: 660px; }
+    .single { width: 100%; padding: 20px; }
+
+    .reserve { flex-direction: column; align-items: flex-start; gap: 36px; padding: 56px 20px; }
+    .reserve-copy { width: 100%; }
+    .reserve-copy p { width: auto; }
+    .reserve-img { width: 100%; flex: none; height: 240px; }
+    .reserve-img .quote { top: auto; bottom: 18px; font-size: 18px; }
+
+    footer { padding: 32px 20px 24px; }
+    .foot-top { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .foot-links, .social { flex-wrap: wrap; gap: 14px 24px; }
+    .foot-bottom { flex-direction: column; gap: 10px; }
+  }
+
+  /* RESPONSIVE: phones */
+  @media (max-width: 480px) {
+    .eyebrow { font-size: 10px; }
+    .hero-title { font-size: 38px; }
+    .cabins-title h2,
+    .avail-head h2,
+    .reserve-copy h2 { font-size: 32px; }
+    .identity h3 { font-size: 28px; }
+    .slide.main { width: 84vw; }
+    .slide.side { width: 62vw; }
+    .sample p, .info .note { font-size: 14px; }
+    .cabins-head p { font-size: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -224,9 +353,13 @@
       <div class="brand-name">Casa Río</div>
       <div class="brand-sub">CABAÑAS</div>
     </div>
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Activar modo oscuro" aria-pressed="false">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
   </div>
   <div class="links">
-    <a href="#cabanas">Las cabañas</a>
+    <a href="#cabanas">Cabañas</a>
     <a href="#disponibilidad">Disponibilidad</a>
     <a href="#contacto">Contacto</a>
     <a class="btn-dark" href="#contacto">Consultar reserva</a>
@@ -527,6 +660,26 @@
       el.appendChild(i);
     });
   }
+</script>
+<script>
+  // Dark mode toggle. Preference is stored in localStorage; default is light.
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById("theme-toggle");
+    function render() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      btn.setAttribute("aria-label", dark ? "Activar modo claro" : "Activar modo oscuro");
+      btn.setAttribute("aria-pressed", String(dark));
+    }
+    btn.addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") !== "dark";
+      if (dark) root.setAttribute("data-theme", "dark");
+      else root.removeAttribute("data-theme");
+      try { localStorage.setItem("casa-rio-theme", dark ? "dark" : "light"); } catch (e) {}
+      render();
+    });
+    render();
+  })();
 </script>
 </body>
 </html>
